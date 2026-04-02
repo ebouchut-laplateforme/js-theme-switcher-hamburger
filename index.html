@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
+
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interface web dynamique - Démonstration JavaScript</title>
+    <title>Dynamic Web Interface with JavaScript</title>
+
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" defer></script>
   </head>
+
   <body class="page">
-    <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+    <a class="skip-link" href="#main-content">Go to the main content</a>
 
     <header class="header">
-      <h1 class="header__title">Interface web dynamique</h1>
 
-      <nav class="nav" aria-label="Choix du thème">
+      <nav class="nav" aria-label="Theme selection">
         <button class="nav__toggle" type="button"
                 aria-expanded="false" aria-controls="menu-themes">
           <span class="nav__toggle-icon" aria-hidden="true">☰</span>
@@ -22,13 +24,13 @@
 
         <ul class="nav__list" id="menu-themes">
           <li class="nav__item">
-            <button class="nav__button" type="button" lang="en"
+            <button class="nav__button" type="button"
                     data-theme="dark" aria-pressed="false">
               Dark Mode
             </button>
           </li>
           <li class="nav__item">
-            <button class="nav__button" type="button" lang="en"
+            <button class="nav__button" type="button"
                     data-theme="light" aria-pressed="true">
               Light Mode
             </button>
@@ -37,35 +39,35 @@
       </nav>
     </header>
 
-    <main class="main" id="contenu">
+    <main class="main" id="main-content">
+      <h1 class="main__title">Dynamic Web Interface with JavaScript</h1>
+
       <section class="hero">
-        <h2 class="hero__title">Changez de thème, la page s'adapte</h2>
+        <h2 class="hero__title">Change the theme, and the page will change too!</h2>
+
         <p class="hero__text">
-          Cette page illustre la compétence « Développer une interface web
-          dynamique » (CP&nbsp;4 du titre professionnel DWWM) : le menu, le thème
-          et l'illustration ci-dessous sont pilotés en JavaScript, sans
-          rechargement de la page.
+          The theme and image switch are driven by Javascript.
         </p>
-        <button class="button" type="button" id="bascule-theme">
-          Basculer le thème
+
+        <button class="button" type="button" id="theme-toggle">
+          Toggle the theme
         </button>
       </section>
 
       <figure class="theme-figure">
-        <img class="theme-figure__image" id="illustration-theme"
+        <img class="theme-figure__image" id="theme-illustration"
              src="img/theme-light.svg"
-             alt="Plage ensoleillée avec un palmier et le soleil au-dessus de la mer"
+             alt="Sunny beach with a palm tree."
              width="500" height="350">
         <figcaption class="theme-figure__caption">
-          L'illustration change selon le thème choisi dans le menu.
+          The image changes based on the theme selected from the hamburger menu.
         </figcaption>
       </figure>
     </main>
 
     <footer class="footer">
       <p class="footer__text">
-        Projet pédagogique La Plateforme_ : HTML sémantique, CSS (notation BEM)
-        et JavaScript, conforme aux critères RGAA.
+        Dynamic Web Interface with JavaScript (hamburger menu, CSS media-queries).
       </p>
     </footer>
   </body>

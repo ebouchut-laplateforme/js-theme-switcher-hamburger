@@ -11,8 +11,8 @@ const page = document.body;
 const navToggle = document.querySelector(".nav__toggle");
 const navList = document.querySelector(".nav__list");
 const themeButtons = document.querySelectorAll(".nav__button");
-const themeToggleButton = document.querySelector("#bascule-theme");
-const themeImage = document.querySelector("#illustration-theme");
+const themeToggleButton = document.querySelector("#theme-toggle");
+const themeImage = document.querySelector("#theme-illustration");
 
 /*
  * Each theme carries its illustration and the matching text
@@ -21,11 +21,11 @@ const themeImage = document.querySelector("#illustration-theme");
 const THEMES = {
   light: {
     image: "img/theme-light.svg",
-    alt: "Plage ensoleillée avec un palmier et le soleil au-dessus de la mer",
+    alt: "Sunny beach with a palm tree.",
   },
   dark: {
     image: "img/theme-dark.svg",
-    alt: "Paysage de nuit avec la pleine lune et des étoiles",
+    alt: "Night landscape with a full moon and stars.",
   },
 };
 

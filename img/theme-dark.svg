@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350">
+  <title>Nuit étoilée avec la pleine lune</title>
+  <defs>
+    <linearGradient id="nuit" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b1026"/>
+      <stop offset="1" stop-color="#1d2951"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Night sky -->
+  <rect width="500" height="350" fill="url(#nuit)"/>
+
+  <!-- Moon with halo and craters -->
+  <circle cx="360" cy="100" r="68" fill="#f6f1d5" opacity="0.12"/>
+  <circle cx="360" cy="100" r="48" fill="#f6f1d5"/>
+  <circle cx="344" cy="86" r="9" fill="#ded8b8"/>
+  <circle cx="378" cy="112" r="7" fill="#ded8b8"/>
+  <circle cx="352" cy="120" r="5" fill="#ded8b8"/>
+
+  <!-- Stars -->
+  <g fill="#ffffff">
+    <circle cx="60" cy="50" r="2.5"/>
+    <circle cx="130" cy="90" r="2"/>
+    <circle cx="200" cy="40" r="2.5"/>
+    <circle cx="260" cy="120" r="2"/>
+    <circle cx="90" cy="150" r="2"/>
+    <circle cx="180" cy="180" r="2.5"/>
+    <circle cx="290" cy="60" r="1.5"/>
+    <circle cx="440" cy="200" r="2"/>
+    <circle cx="470" cy="60" r="2"/>
+    <circle cx="40" cy="220" r="1.5"/>
+  </g>
+  <g fill="#ffffff">
+    <path d="M120 220 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3 Z"/>
+    <path d="M430 120 l2.5 7 7 2.5 -7 2.5 -2.5 7 -2.5 -7 -7 -2.5 7 -2.5 Z"/>
+  </g>
+
+  <!-- Hills -->
+  <path d="M0 300 Q125 252 250 296 T500 292 L500 350 L0 350 Z" fill="#0a132e"/>
+</svg>

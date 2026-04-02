@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface web dynamique - Démonstration JavaScript</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+  </head>
+  <body class="page">
+    <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+
+    <header class="header">
+      <h1 class="header__title">Interface web dynamique</h1>
+
+      <nav class="nav" aria-label="Choix du thème">
+        <button class="nav__toggle" type="button"
+                aria-expanded="false" aria-controls="menu-themes">
+          <span class="nav__toggle-icon" aria-hidden="true">☰</span>
+          Menu
+        </button>
+
+        <ul class="nav__list" id="menu-themes">
+          <li class="nav__item">
+            <button class="nav__button" type="button" lang="en"
+                    data-theme="dark" aria-pressed="false">
+              Dark Mode
+            </button>
+          </li>
+          <li class="nav__item">
+            <button class="nav__button" type="button" lang="en"
+                    data-theme="light" aria-pressed="true">
+              Light Mode
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main" id="contenu">
+      <section class="hero">
+        <h2 class="hero__title">Changez de thème, la page s'adapte</h2>
+        <p class="hero__text">
+          Cette page illustre la compétence « Développer une interface web
+          dynamique » (CP&nbsp;4 du titre professionnel DWWM) : le menu, le thème
+          et l'illustration ci-dessous sont pilotés en JavaScript, sans
+          rechargement de la page.
+        </p>
+        <button class="button" type="button" id="bascule-theme">
+          Basculer le thème
+        </button>
+      </section>
+
+      <figure class="theme-figure">
+        <img class="theme-figure__image" id="illustration-theme"
+             src="img/theme-light.svg"
+             alt="Plage ensoleillée avec un palmier et le soleil au-dessus de la mer"
+             width="500" height="350">
+        <figcaption class="theme-figure__caption">
+          L'illustration change selon le thème choisi dans le menu.
+        </figcaption>
+      </figure>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__text">
+        Projet pédagogique La Plateforme_ : HTML sémantique, CSS (notation BEM)
+        et JavaScript, conforme aux critères RGAA.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350">
+  <title>Plage ensoleillée avec un palmier</title>
+  <defs>
+    <linearGradient id="ciel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#aee3f7"/>
+      <stop offset="1" stop-color="#e8f7fd"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="500" height="240" fill="url(#ciel)"/>
+
+  <!-- Sun -->
+  <circle cx="390" cy="80" r="38" fill="#ffd23f"/>
+  <g stroke="#ffd23f" stroke-width="6" stroke-linecap="round">
+    <line x1="390" y1="18" x2="390" y2="32"/>
+    <line x1="390" y1="128" x2="390" y2="142"/>
+    <line x1="328" y1="80" x2="342" y2="80"/>
+    <line x1="438" y1="80" x2="452" y2="80"/>
+    <line x1="346" y1="36" x2="356" y2="46"/>
+    <line x1="424" y1="114" x2="434" y2="124"/>
+    <line x1="434" y1="36" x2="424" y2="46"/>
+    <line x1="356" y1="114" x2="346" y2="124"/>
+  </g>
+
+  <!-- Sea -->
+  <rect y="240" width="500" height="55" fill="#2f9dcf"/>
+  <g stroke="#bfe6f5" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M40 258 q10 -7 20 0 t20 0"/>
+    <path d="M250 270 q10 -7 20 0 t20 0"/>
+    <path d="M400 255 q10 -7 20 0 t20 0"/>
+  </g>
+
+  <!-- Sand -->
+  <path d="M0 295 Q250 260 500 295 L500 350 L0 350 Z" fill="#f0d9a8"/>
+
+  <!-- Palm tree -->
+  <path d="M118 315 C112 260 118 215 140 180" stroke="#8a5a33"
+        stroke-width="14" fill="none" stroke-linecap="round"/>
+  <g fill="#2e8b57">
+    <path d="M140 180 C112 152 72 150 42 170 C82 177 112 182 140 190 Z"/>
+    <path d="M140 180 C122 142 92 122 57 124 C97 142 120 160 140 188 Z"/>
+    <path d="M140 180 C152 140 187 120 227 124 C187 142 160 160 142 188 Z"/>
+    <path d="M140 180 C172 152 212 150 242 172 C202 178 170 184 140 190 Z"/>
+    <path d="M140 180 C134 147 142 117 162 97 C157 132 154 157 148 186 Z"/>
+  </g>
+  <circle cx="132" cy="188" r="7" fill="#6b4423"/>
+  <circle cx="149" cy="191" r="7" fill="#6b4423"/>
+</svg>

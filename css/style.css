@@ -6,227 +6,250 @@
  * All color pairs meet the RGAA contrast ratio (>= 4.5:1).
  */
 
+/* Light theme (default): warm sand and teal palette */
 .page {
-  --color-background: #f6f1e7;
-  --color-surface: #ffffff;
-  --color-text: #24324a;
-  --color-accent: #0b6e78;
-  --color-on-accent: #ffffff;
-  --color-focus: #b3540e;
+  --color-background: #f6f1e7; /* Page background: warm off-white */
+  --color-surface: #ffffff;    /* Header and footer background */
+  --color-text: #24324a;       /* Main text: dark navy blue */
+  --color-accent: #0b6e78;     /* Buttons and highlights: deep teal */
+  --color-on-accent: #ffffff;  /* Text placed on top of the accent color */
+  --color-focus: #b3540e;      /* Keyboard focus outline: burnt orange */
 }
 
+/* Dark theme: same variables with a night palette (class toggled by JS) */
 .page--dark {
-  --color-background: #101828;
-  --color-surface: #1c2740;
-  --color-text: #eef2f9;
-  --color-accent: #ffd166;
-  --color-on-accent: #1b2233;
-  --color-focus: #ffd166;
+  --color-background: #101828; /* Page background: deep night blue */
+  --color-surface: #1c2740;    /* Header and footer background */
+  --color-text: #eef2f9;       /* Main text: near white */
+  --color-accent: #ffd166;     /* Buttons and highlights: moon yellow */
+  --color-on-accent: #1b2233;  /* Dark text, readable on the yellow accent */
+  --color-focus: #ffd166;      /* Keyboard focus outline: moon yellow */
 }
 
 /* ~~~ Base */
 
+/* Apply to every element on the page */
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* Include padding and border in declared sizes */
 }
 
+/* Whole page layout and default text style (block set on <body>) */
 .page {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  margin: 0;              /* Remove the default browser margin around <body> */
+  min-height: 100vh;      /* Fill at least the whole viewport height */
+  display: flex;          /* Stack the direct children as flex items... */
+  flex-direction: column; /* ...vertically, so the footer sticks to the bottom */
 
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.6;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; /* Native font of each OS */
+  line-height: 1.6;       /* Comfortable reading rhythm */
 
-  background-color: var(--color-background);
-  color: var(--color-text);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--color-background);               /* Theme driven background */
+  color: var(--color-text);                                /* Theme driven text color */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme change */
 }
 
 /* Visible keyboard focus on every interactive element (RGAA 10.7) */
 :focus-visible {
-  outline: 3px solid var(--color-focus);
-  outline-offset: 2px;
+  outline: 3px solid var(--color-focus); /* Thick, high contrast focus ring */
+  outline-offset: 2px;                   /* Small gap between element and ring */
 }
 
-/* ~~~ Skip link (RGAA 12.7)
- *
- * Visually hidden until it receives keyboard focus.
- */
+/* ~~~ Skip link (RGAA 12.7) */
 
+/* First focusable element: jumps straight to the main content.
+ * Visually hidden until it receives keyboard focus. */
 .skip-link {
-  position: absolute;
-  left: -9999px;
+  position: absolute; /* Take the link out of the normal flow */
+  left: -9999px;      /* Park it far off screen (still focusable) */
 
-  background-color: var(--color-accent);
-  color: var(--color-on-accent);
-  padding: 0.5rem 1rem;
+  background-color: var(--color-accent); /* Accent background when visible */
+  color: var(--color-on-accent);         /* Readable text on the accent color */
+  padding: 0.5rem 1rem;                  /* Comfortable click and read area */
 }
 
+/* Bring the skip link back on screen when it receives keyboard focus */
 .skip-link:focus {
-  left: 1rem;
-  top: 1rem;
-  z-index: 1;
+  left: 1rem; /* Move back into the viewport... */
+  top: 1rem;  /* ...near the top left corner */
+  z-index: 1; /* Draw it above the header */
 }
 
 /* ~~~ Header block */
 
+/* Page header: holds the theme navigation */
 .header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem 1.5rem;
+  display: flex;                  /* Lay out the children side by side */
+  flex-wrap: wrap;                /* Let the open menu wrap below on mobile */
+  align-items: center;            /* Vertically center the children */
+  justify-content: space-between; /* Spread them over the full width */
+  gap: 1rem;                      /* Minimum space between children */
+  padding: 1rem 1.5rem;           /* Breathing room inside the header */
 
-  background-color: var(--color-surface);
-  transition: background-color 0.3s ease;
-}
-
-.header__title {
-  margin: 0;
-  font-size: 1.5rem;
+  background-color: var(--color-surface); /* Stand out from the page background */
+  transition: background-color 0.3s ease; /* Smooth theme change */
 }
 
 /* ~~~ Nav block (hamburger menu) */
 
+/* Hamburger button: only visible below 768px (see media queries) */
 .nav__toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  display: flex;        /* Lay the icon and the label side by side */
+  align-items: center;  /* Vertically center them */
+  gap: 0.5rem;          /* Space between icon and label */
+  padding: 0.5rem 1rem; /* Large enough touch target */
 
-  font: inherit;
-  cursor: pointer;
+  font: inherit;        /* Use the page font, not the browser button font */
+  cursor: pointer;      /* Show the element is clickable */
 
-  background-color: transparent;
-  color: inherit;
-  border: 2px solid currentColor;
-  border-radius: 0.5rem;
+  background-color: transparent;  /* Let the header color show through */
+  color: inherit;                 /* Use the surrounding text color */
+  border: 2px solid currentColor; /* Outline drawn with the text color */
+  border-radius: 0.5rem;          /* Rounded corners */
 }
 
+/* The ☰ character inside the hamburger button */
 .nav__toggle-icon {
-  font-size: 1.25rem;
-  line-height: 1;
+  font-size: 1.25rem; /* Slightly larger than the label */
+  line-height: 1;     /* Keep the icon vertically compact */
 }
 
+/* Menu list: horizontal by default (desktop) */
 .nav__list {
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
+  display: flex; /* Place the items in a row */
+  gap: 1rem;     /* Space between items */
+  margin: 0;     /* Drop the default list margin */
+  padding: 0;    /* Drop the default list indentation */
 }
 
+/* One entry of the menu */
 .nav__item {
-  /* Do not display bullet in front of list items */
-  list-style: none;
+  list-style: none; /* Do not display a bullet in front of the item */
 }
 
+/* Theme choice button inside the menu */
 .nav__button {
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem 1.25rem; /* Large enough touch target */
 
-  font: inherit;
-  cursor: pointer;
+  font: inherit;   /* Use the page font, not the browser button font */
+  cursor: pointer; /* Show the element is clickable */
 
-  background-color: transparent;
-  color: inherit;
-  border: 2px solid currentColor;
-  border-radius: 0.5rem;
+  background-color: transparent;  /* Let the header color show through */
+  color: inherit;                 /* Use the surrounding text color */
+  border: 2px solid currentColor; /* Outline drawn with the text color */
+  border-radius: 0.5rem;          /* Rounded corners */
 }
 
+/* Invert the colors when hovering a theme button */
 .nav__button:hover {
-  background-color: var(--color-accent);
-  color: var(--color-on-accent);
+  background-color: var(--color-accent); /* Fill with the accent color */
+  color: var(--color-on-accent);         /* Switch to the matching readable color */
 }
 
 /* The active theme is conveyed by more than color alone (RGAA 3.1):
  * bold text, an underline and the aria-pressed state for screen readers. */
 .nav__button[aria-pressed="true"] {
-  font-weight: bold;
-  text-decoration: underline;
-  text-underline-offset: 0.25rem;
+  font-weight: bold;              /* Bold label */
+  text-decoration: underline;     /* Underlined label */
+  text-underline-offset: 0.25rem; /* Push the underline slightly down */
 }
 
 /* ~~~ Main content */
 
+/* Main landmark: centered column that pushes the footer down */
 .main {
-  flex: 1;
-  width: min(100%, 60rem);
-  margin: 0 auto;
-  padding: 1.5rem;
+  flex: 1;                 /* Grow to fill the leftover height (sticky footer) */
+  width: min(100%, 60rem); /* Fluid width, capped at 60rem for readability */
+  margin: 0 auto;          /* Center the column horizontally */
+  padding: 1.5rem;         /* Breathing room around the content */
 }
 
+/* Main page title (h1) */
+.main__title {
+  margin: 0;         /* Drop the default heading margin */
+  font-size: 1.5rem; /* Title size */
+}
+
+/* Introduction section */
 .hero {
-  text-align: center;
+  text-align: center; /* Center the title, the text and the button */
 }
 
+/* Section heading (h2) */
 .hero__title {
-  font-size: 1.75rem;
+  font-size: 1.75rem; /* Larger than the body text */
 }
 
+/* Introduction paragraph */
 .hero__text {
-  max-width: 45rem;
-  margin: 0 auto 1.5rem;
+  max-width: 45rem;      /* Keep the line length comfortable to read */
+  margin: 0 auto 1.5rem; /* Center it and add space before the button */
 }
 
 /* ~~~ Button block (standalone call-to-action) */
 
+/* Filled accent button used to toggle the theme */
 .button {
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.5rem; /* Large touch target */
 
-  font: inherit;
-  font-weight: bold;
-  cursor: pointer;
+  font: inherit;     /* Use the page font, not the browser button font */
+  font-weight: bold; /* Make the label stand out */
+  cursor: pointer;   /* Show the element is clickable */
 
-  background-color: var(--color-accent);
-  color: var(--color-on-accent);
-  border: none;
-  border-radius: 0.5rem;
-  transition: transform 0.15s ease;
+  background-color: var(--color-accent); /* Fill with the accent color */
+  color: var(--color-on-accent);         /* Readable text on the accent color */
+  border: none;                          /* No border needed on a filled button */
+  border-radius: 0.5rem;                 /* Rounded corners */
+  transition: transform 0.15s ease;      /* Animate the hover scale */
 }
 
+/* Grow the button slightly on hover */
 .button:hover {
-  transform: scale(1.05);
+  transform: scale(1.05); /* 5% zoom as a hover cue */
 }
 
-/* ~~~ Theme figure block (medium-sized, centered illustration) */
+/* ~~~ Theme figure block (medium sized, centered illustration) */
 
+/* Figure wrapping the illustration and its caption */
 .theme-figure {
-  margin: 2rem auto;
-  text-align: center;
+  margin: 2rem auto;  /* Vertical spacing and horizontal centering */
+  text-align: center; /* Center the caption under the image */
 }
 
+/* The illustration itself (swapped by JS when the theme changes) */
 .theme-figure__image {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  height: auto;
+  display: block;  /* Remove the inline image baseline gap */
+  margin: 0 auto;  /* Center the image inside the figure */
+  max-width: 100%; /* Never overflow on small screens */
+  height: auto;    /* Preserve the image proportions */
 
-  border-radius: 1rem;
+  border-radius: 1rem; /* Soften the corners */
 }
 
+/* Caption displayed under the illustration */
 .theme-figure__caption {
-  margin-top: 0.75rem;
-  font-style: italic;
+  margin-top: 0.75rem; /* Space between the image and the caption */
+  font-style: italic;  /* Distinguish the caption from the body text */
 }
 
 /* ~~~ Footer block */
 
+/* Page footer */
 .footer {
-  padding: 1rem 1.5rem;
-  text-align: center;
+  padding: 1rem 1.5rem; /* Breathing room inside the footer */
+  text-align: center;   /* Center the footer text */
 
-  background-color: var(--color-surface);
-  transition: background-color 0.3s ease;
+  background-color: var(--color-surface); /* Match the header background */
+  transition: background-color 0.3s ease; /* Smooth theme change */
 }
 
+/* Single line of text in the footer */
 .footer__text {
-  margin: 0;
+  margin: 0; /* Drop the default paragraph margin */
 }
 
 /* ~~~ Media queries */
 
+/* Mobile and small tablets */
 @media only screen and (width < 768px) {
 
   /*
@@ -235,16 +258,20 @@
    * - the menu is hidden until the hamburger button is clicked,
    * - the menu items are stacked vertically.
    */
+
+  /* Hide the menu until the hamburger button opens it */
   .nav__list {
-    display: none;
+    display: none; /* Removed from the flow and from screen readers */
   }
 
+  /* Menu opened by JS: displayed as a vertical dropdown */
   .nav__list--open {
-    display: flex;
-    flex-direction: column;
+    display: flex;          /* Bring the menu back... */
+    flex-direction: column; /* ...with the items stacked vertically */
   }
 }
 
+/* Desktop and large tablets */
 @media only screen and (width >= 768px) {
 
   /*
@@ -252,18 +279,21 @@
    * - the navigation links are always displayed horizontally,
    * - the hamburger button is hidden.
    */
+
+  /* No hamburger needed: the menu is always visible */
   .nav__toggle {
-    display: none;
+    display: none; /* Removed from the flow and from screen readers */
   }
 }
 
 /* Respect the user's motion preference (RGAA 13.11) */
 @media (prefers-reduced-motion: reduce) {
 
+  /* Disable every animated transition declared above */
   .page,
   .header,
   .footer,
   .button {
-    transition: none;
+    transition: none; /* Theme and hover changes become instantaneous */
   }
 }

@@ -1,0 +1,269 @@
+/* ~~~ Theme variables
+ *
+ * The default (light) palette lives on the `page` block.
+ * The `page--dark` modifier switches every variable at once,
+ * so the whole theme flips with a single CSS class toggled in JS.
+ * All color pairs meet the RGAA contrast ratio (>= 4.5:1).
+ */
+
+.page {
+  --color-background: #f6f1e7;
+  --color-surface: #ffffff;
+  --color-text: #24324a;
+  --color-accent: #0b6e78;
+  --color-on-accent: #ffffff;
+  --color-focus: #b3540e;
+}
+
+.page--dark {
+  --color-background: #101828;
+  --color-surface: #1c2740;
+  --color-text: #eef2f9;
+  --color-accent: #ffd166;
+  --color-on-accent: #1b2233;
+  --color-focus: #ffd166;
+}
+
+/* ~~~ Base */
+
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Visible keyboard focus on every interactive element (RGAA 10.7) */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* ~~~ Skip link (RGAA 12.7)
+ *
+ * Visually hidden until it receives keyboard focus.
+ */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  padding: 0.5rem 1rem;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 1;
+}
+
+/* ~~~ Header block */
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+
+  background-color: var(--color-surface);
+  transition: background-color 0.3s ease;
+}
+
+.header__title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* ~~~ Nav block (hamburger menu) */
+
+.nav__toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+
+  font: inherit;
+  cursor: pointer;
+
+  background-color: transparent;
+  color: inherit;
+  border: 2px solid currentColor;
+  border-radius: 0.5rem;
+}
+
+.nav__toggle-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.nav__list {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__item {
+  /* Do not display bullet in front of list items */
+  list-style: none;
+}
+
+.nav__button {
+  padding: 0.5rem 1.25rem;
+
+  font: inherit;
+  cursor: pointer;
+
+  background-color: transparent;
+  color: inherit;
+  border: 2px solid currentColor;
+  border-radius: 0.5rem;
+}
+
+.nav__button:hover {
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+/* The active theme is conveyed by more than color alone (RGAA 3.1):
+ * bold text, an underline and the aria-pressed state for screen readers. */
+.nav__button[aria-pressed="true"] {
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+/* ~~~ Main content */
+
+.main {
+  flex: 1;
+  width: min(100%, 60rem);
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.hero {
+  text-align: center;
+}
+
+.hero__title {
+  font-size: 1.75rem;
+}
+
+.hero__text {
+  max-width: 45rem;
+  margin: 0 auto 1.5rem;
+}
+
+/* ~~~ Button block (standalone call-to-action) */
+
+.button {
+  padding: 0.75rem 1.5rem;
+
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  border: none;
+  border-radius: 0.5rem;
+  transition: transform 0.15s ease;
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+/* ~~~ Theme figure block (medium-sized, centered illustration) */
+
+.theme-figure {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.theme-figure__image {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+
+  border-radius: 1rem;
+}
+
+.theme-figure__caption {
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+/* ~~~ Footer block */
+
+.footer {
+  padding: 1rem 1.5rem;
+  text-align: center;
+
+  background-color: var(--color-surface);
+  transition: background-color 0.3s ease;
+}
+
+.footer__text {
+  margin: 0;
+}
+
+/* ~~~ Media queries */
+
+@media only screen and (width < 768px) {
+
+  /*
+   * When the resolution is below 768px:
+   * - the hamburger button is displayed,
+   * - the menu is hidden until the hamburger button is clicked,
+   * - the menu items are stacked vertically.
+   */
+  .nav__list {
+    display: none;
+  }
+
+  .nav__list--open {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (width >= 768px) {
+
+  /*
+   * When the resolution is >= 768px:
+   * - the navigation links are always displayed horizontally,
+   * - the hamburger button is hidden.
+   */
+  .nav__toggle {
+    display: none;
+  }
+}
+
+/* Respect the user's motion preference (RGAA 13.11) */
+@media (prefers-reduced-motion: reduce) {
+
+  .page,
+  .header,
+  .footer,
+  .button {
+    transition: none;
+  }
+}

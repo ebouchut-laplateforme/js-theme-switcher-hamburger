@@ -7,6 +7,9 @@
  * - swap the illustration according to the active theme.
  */
 
+// Key used to remember the chosen theme in the browser local storage
+const THEME_STORAGE_KEY = "theme";
+
 const page = document.body;
 const navToggle = document.querySelector(".nav__toggle");
 const navList = document.querySelector(".nav__list");
@@ -46,6 +49,9 @@ function applyTheme(themeName) {
     const isActive = button.dataset.theme === themeName;
     button.setAttribute("aria-pressed", String(isActive));
   });
+
+  // Remember the choice for the next visit
+  localStorage.setItem(THEME_STORAGE_KEY, themeName);
 }
 
 themeButtons.forEach((button) => {
@@ -91,3 +97,13 @@ document.addEventListener("keydown", (event) => {
     navToggle.focus();
   }
 });
+
+/* ~~~ Theme persistence */
+
+// Restore the theme chosen during a previous visit.
+// The guard ignores a missing or unknown stored value.
+const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+
+if (THEMES[savedTheme]) {
+  applyTheme(savedTheme);
+}
